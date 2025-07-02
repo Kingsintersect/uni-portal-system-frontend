@@ -54,7 +54,7 @@ export const AdminNavMain = [
 		],
 	},
 	{
-		title: "STUDENT GRADE MANAGEMENT",
+		title: "STUDENT GRADES",
 		url: "#",
 		icon: BookOpen,
 		items: [
