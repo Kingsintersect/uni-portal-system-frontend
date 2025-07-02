@@ -24,6 +24,12 @@ export const metadata: Metadata = {
     default: `${SITE_NAME}`,
   },
   description: "Manage Account and data",
+  icons: {
+    icon: [
+      { url: "/logo/logo2.png", sizes: "any" },
+      { url: "/logo/logo2.png", type: "image/png" }
+    ]
+  }
 };
 
 export const viewport: Viewport = {
@@ -41,7 +47,9 @@ export default async function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-
+      <head>
+        <link rel="icon" href="/logo/logo2.png" type="image/x-icon" />
+      </head>
       <body
         className={cn(
           `bg-background overscroll-none antialiased`,

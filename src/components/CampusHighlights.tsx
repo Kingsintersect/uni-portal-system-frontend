@@ -14,7 +14,8 @@ export default function CampusHighlights() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="group relative overflow-hidden rounded-lg h-64 w-auto">
                     <Image
-                        src="/api/placeholder/800/600"
+                        src="/campus/ca-1.jpeg"
+                        fill
                         alt="Modern library"
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                     />
@@ -24,7 +25,8 @@ export default function CampusHighlights() {
                 </div>
                 <div className="group relative overflow-hidden rounded-lg h-64 w-auto">
                     <Image
-                        src="/api/placeholder/800/600"
+                        src="/campus/ca-2.jpeg"
+                        fill
                         alt="Research facilities"
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                     />
@@ -34,7 +36,8 @@ export default function CampusHighlights() {
                 </div>
                 <div className="group relative overflow-hidden rounded-lg h-64 w-auto">
                     <Image
-                        src="/api/placeholder/800/600"
+                        src="/campus/ca-3.jpeg"
+                        fill
                         alt="Sports complex"
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                     />
@@ -44,7 +47,8 @@ export default function CampusHighlights() {
                 </div>
                 <div className="group relative overflow-hidden rounded-lg h-64 w-auto">
                     <Image
-                        src="/api/placeholder/800/600"
+                        src="/campus/ca-4.jpeg"
+                        fill
                         alt="Student housing"
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                     />

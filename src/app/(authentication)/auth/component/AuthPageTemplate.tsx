@@ -21,7 +21,7 @@ const AuthPageTemplate: React.FC<AuthPageTemplateProps> = ({ title, subTitle, ch
                   <div className="flex h-full">
                      <div className="md:basis-2/3 hidden md:block">
                         <div className="flex items-center h-full justify-center">
-                           <AppLogo image_url={'/logo/logo.png'} classList='' Img_container_style='w-52 h-52' />
+                           <AppLogo image_url={'/logo/logo.jpg'} classList='' Img_container_style='w-52 h-52' />
                         </div>
                      </div>
                      <div className="w-full sm:basis-3/3 md:basis-1/3 bg-white">
