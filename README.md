@@ -60,6 +60,10 @@ git push -u origin feature/add-student-profile
 - Add a clear title and description
 - Request a review from a teammate
 
+#### =========>>>>>>>>>> Make sure:
+ -base branch is develop
+ -compare is feature/your-feature-name
+
 ### 6. Merge PR into `develop`
 
 Once reviewed and approved, the PR can be merged into `develop`.

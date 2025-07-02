@@ -18,7 +18,7 @@ const carouselImages: CarouselImage[] = [
     {
         url: "/slides/slide-1.jpg",
         alt: "University campus main building",
-        title: "Welcome to University Portal",
+        title: "Welcome to Chukwuemeka Odumegwu Ojukwu University LMS",
         subtitle: "Discover a world of opportunities and excellence",
     },
     {
@@ -125,15 +125,15 @@ export default function HeroCarousel() {
                 ))}
             </div>
             <div className="absolute z-50 top-2/3 left-20 max-w-2xl min-h-20 rounded-lg p-4 transform -translate-y-1/2">
-                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
-                    <h2 className="text-2xl font-bold text-[#23608c] mb-4">{SITE_NAME.toLowerCase()}</h2>
+                <div className="bg-white/50 backdrop-blur-sm rounded-lg p-4">
+                    <h2 className="text-2xl font-bold text-site-a mb-4">{SITE_NAME.toLowerCase()}</h2>
                     <div className="h-full flex items-center justify-start gap-10">
                         <Button variant={"default"} asChild size={"lg"}>
                             <Link href="/auth/signin">
                                 Login to continue
                             </Link>
                         </Button>
-                        <Button variant={"secondary"} asChild size={"lg"}>
+                        <Button variant={"default"} asChild size={"lg"} className="bg-[#d25400] hover:bg-[#b34800] text-white">
                             <Link href="/auth/signup" className="flex items-center gap-10">
                                 <div className="">Create An Account</div>
                                 <ChevronsRight className="h-5 w-5 ml-5 " />

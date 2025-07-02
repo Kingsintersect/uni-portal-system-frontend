@@ -23,14 +23,3 @@ export default function Home() {
 		</main>
 	);
 }
-
-// can you geenrate a university portal landing page in nextjs14 typescript environment with shadcn and tailwindcss - v4.it has to have a full page image carousel and a few landing page Content.consider separation of concerns.and make it well structured and buatifull with these colors #23608c and #d25400
-
-
-// import AppCarousel from "@/components/application/AppCarousel";
-
-// export default function Home() {
-//   return (
-//     <AppCarousel classList="m-h-sreen" />
-//   );
-// }

@@ -49,7 +49,7 @@ export const AdminNavMain = [
 		items: [
 			{
 				title: "Migrate Students",
-				url: "/dashboard/admin/session-migration",
+				url: "/dashboard/admin/session-migrations",
 			},
 		],
 	},
