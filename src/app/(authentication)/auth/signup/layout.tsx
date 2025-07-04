@@ -26,7 +26,7 @@ const Layout: NextPage<LayoutProps> = ({ children }: LayoutProps) => {
                   <div className="flex h-full">
                      <div className="md:basis-2/6 hidden md:block bg-gradient-to-br from-site-a/50  from-10% to-site-b  to-90%">
                         <div className="flex items-center h-full justify-center">
-                           <AppLogo image_url={'/logo/logo.svg'} classList='' Img_container_style='w-52 h-52' />
+                           <AppLogo image_url={'/logo/logo.jpg'} classList='' Img_container_style='w-52 h-52' />
                         </div>
                      </div>
                      <div className="w-full sm:basis-3/3 md:basis-4/6 bg-white">
