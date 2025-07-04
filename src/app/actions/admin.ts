@@ -160,22 +160,9 @@ export const adminCreateNewStudent = async (
 
 
 // result system
-export const fetchDepartments2 = async (access_token: string) => {
-	const response = (await apiCallerBeta({
-		url: `${remoteApiUrl}/admin/admin-login`,
-		method: "GET",
-		headers: {
-			Authorization: `Bearer ${access_token}`,
-		},
-	}))
-	if (response.error) {
-		throw new Error(response.error.toString() || "Failed to fetch students");
-	}
-	console.log('response.success', response.success)
-	return response.success;
-}
-export const fetchDepartments = async (access_token: string) => {
-	const res = await fetch(`${remoteApiUrl}/courses`, {
+export const fetchLmsCourses = async (access_token: string, short_code: string) => {
+	console.log('short_code', short_code)
+	const res = await fetch(`${remoteApiUrl}/odl/cohorts-and-categories-and-courses`, {
 		method: "GET",
 		headers: {
 			"Content-Type": "application/json",
@@ -188,7 +175,10 @@ export const fetchDepartments = async (access_token: string) => {
 		throw new Error(error.message || "Failed to fetch students");
 	}
 	const result = await res.json();
-	return result.data;
+	console.log('result', result)
+	return result.filter(
+		c => c.cohort_name.trim() === short_code
+	);
 };
 
 export const fetchStudentScores = async (courseId: string | number, access_token: string) => {

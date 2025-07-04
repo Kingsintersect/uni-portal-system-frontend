@@ -65,7 +65,7 @@ export const ProgramSection: React.FC<ProgramSectionProps> = ({
                 />
             )}
 
-            {childPrograms?.length && (
+            {childPrograms?.length > 0 && (
                 <FormField
                     control={control}
                     name="department_id"

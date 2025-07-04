@@ -22,8 +22,10 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { CheckCircle2Icon, Loader2, Upload } from 'lucide-react';
 import { ScoreAnalytics } from './components/ScoreAnalytics';
 import { StudentScoresTable } from './components/StudentScoresTable';
-import { fetchDepartments, fetchStudentScores, publishScores } from '@/app/actions/admin';
+import { fetchLmsCourses, fetchStudentScores, publishScores } from '@/app/actions/admin';
 import { useAuth } from '@/contexts/AuthContext';
+import { Semesters, StudyLevels } from '@/config';
+import { usePrograms } from '@/hooks/usePrograms';
 // import { NoAccessTokenBlock } from '@/components/ui/blocks/NoAccessTokenBlock';
 
 export type ActivityType = "assign" | "quiz" | "exam" | string;
@@ -45,15 +47,41 @@ export type StudentScore = {
 };
 const AdminScoresInterface = () => {
     const [selectedCourseId, setSelectedCourseId] = useState('');
+    const [selectedFaculty, setSelectedFaculty] = useState('');
+    const [selecteDepartment, setSelecteDepartment] = useState('');
+    const [seletedLevel, setSeletedLevel] = useState('');
+    const [selectedSemester, setSelectedSemester] = useState('');
+    const [shortCode, setShortCode] = useState('');
+
+    // useEffect(() => {
+    //     setShortCode(prev => [...prev, selectedSemester]);
+    //     console.log('shortCode', shortCode)
+    // }, [selectedSemester])
+
+
     const [scores, setScores] = useState([]);
     const queryClient = useQueryClient();
     const { access_token } = useAuth();
+    const {
+        parentPrograms,
+        childPrograms,
+        isProgramsLoading,
+        handleProgramChange,
+    } = usePrograms();
 
     // Queries
-    const { data: courses = [], isLoading: departmentsLoading } = useQuery({
-        queryKey: ['courses'],
-        queryFn: () => fetchDepartments(access_token!),
-        enabled: !!access_token && access_token.trim() !== "",
+    // const { data: courses = [], isLoading: departmentsLoading } = useQuery({
+    //     queryKey: ['courses'],
+    //     queryFn: () => fetchLmsCourses(access_token!, "SOC-ECO-100-1SM"),
+    //     enabled: !!access_token && access_token.trim() !== "",
+    // });
+    const {
+        data: courses = [],
+        isLoading: departmentsLoading,
+    } = useQuery({
+        queryKey: ['courses', shortCode],
+        queryFn: () => fetchLmsCourses(access_token!, shortCode!),
+        enabled: false, // disable automatic fetch
     });
 
     const {
@@ -86,7 +114,20 @@ const AdminScoresInterface = () => {
 
     useEffect(() => {
         if (studentcores) setScores(studentcores.students);
-    }, [studentcores])
+    }, [studentcores]);
+
+    useEffect(() => {
+        if (access_token && selectedSemester && selectedFaculty && selecteDepartment && seletedLevel) {
+            // const generatedShortCode = `${selectedFaculty}-${selecteDepartment}-${seletedLevel}-${selectedSemester}`;
+            const generatedShortCode = `SOC-ECO-100-1SM`;
+            setShortCode(generatedShortCode);
+
+            // manually call fetch function instead of relying on refetch()
+            fetchLmsCourses(access_token, generatedShortCode).then((data) => {
+                queryClient.setQueryData(['courses', generatedShortCode], data);
+            });
+        }
+    }, [selectedSemester, access_token, selecteDepartment, selectedFaculty, seletedLevel, queryClient]);
 
 
     // if (!access_token) return (
@@ -135,19 +176,90 @@ const AdminScoresInterface = () => {
                     <CardTitle>Department Selection</CardTitle>
                     <CardDescription>Choose a department to view student scores</CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="grid h-32 grid-cols-2 place-items-center gap-4">
+                    <Select
+                        disabled={isProgramsLoading}
+                        onValueChange={(value) => {
+                            handleProgramChange(value);
+                            setSelectedFaculty(value)
+                        }}
+                    >
+                        <SelectTrigger className="w-full max-w-md ">
+                            <SelectValue placeholder="Select faculty" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            {parentPrograms.map((item) => (
+                                <SelectItem key={item.value} value={item.value}>
+                                    {item.label}
+                                </SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
+                    <Select
+                        disabled={!selectedFaculty}
+                        onValueChange={(value) => {
+                            setSelecteDepartment(value)
+                        }}
+                    >
+                        <SelectTrigger className="w-full max-w-md ">
+                            <SelectValue placeholder="Select a department" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            {childPrograms.map((item, i) => (
+                                <SelectItem key={i} value={item.value}>
+                                    {item.label}
+                                </SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
+                    <Select
+                        disabled={!selecteDepartment}
+                        onValueChange={(value) => {
+                            setSeletedLevel(value)
+                        }}
+                    >
+                        <SelectTrigger className="w-full max-w-md ">
+                            <SelectValue placeholder="Select academic level" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            {StudyLevels.map((level) => (
+                                <SelectItem key={level.value} value={level.value}>
+                                    {level.label}
+                                </SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
+                    <Select
+                        disabled={!seletedLevel}
+                        onValueChange={(value) => {
+                            setSelectedSemester(value)
+                        }}
+                    >
+                        <SelectTrigger className="w-full max-w-md ">
+                            <SelectValue placeholder="Select the semester" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            {Semesters.map((level) => (
+                                <SelectItem key={level.value} value={level.value}>
+                                    {level.label}
+                                </SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
+
+                    {/* GAME CHANGER */}
                     <Select
                         value={selectedCourseId}
                         onValueChange={setSelectedCourseId}
                         disabled={departmentsLoading}
                     >
-                        <SelectTrigger className="w-full max-w-md">
+                        <SelectTrigger className="w-full max-w-md ">
                             <SelectValue placeholder="Select a department" />
                         </SelectTrigger>
                         <SelectContent>
-                            {courses.map((dept) => (
-                                <SelectItem key={dept.id} value={dept.id}>
-                                    {dept.course_title}
+                            {courses.map((course) => (
+                                <SelectItem key={course.course_id} value={course.course_id}>
+                                    {course.course_name}
                                 </SelectItem>
                             ))}
                         </SelectContent>

@@ -201,8 +201,8 @@ export const StudyLevels = [
 ];
 
 export const Semesters = [
-	{ label: "First Semester", value: "1SM" },
-	{ label: "Second Semester", value: "2SM" },
+	{ label: "1st Semester", value: "1SM" },
+	{ label: "2nd Semester", value: "2SM" },
 ];
 
 export const certificateType = [
