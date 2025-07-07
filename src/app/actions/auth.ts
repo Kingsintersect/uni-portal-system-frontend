@@ -149,7 +149,7 @@ export const CreateUsersByCsv = async (
 		data: data,
 		headers: {
 			Authorization: `Bearer ${access_token}`,
-			"Content-Type": "multipart/form-data",
+			"Accept": "multipart/form-data",
 		},
 	});
 	return response;
