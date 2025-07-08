@@ -21,7 +21,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import { AdminNavMain, Roles, SITE_NAME, StudentNavMain } from "@/config"
+import { AdminNavMain, Roles, SITE_NAME, StudentNavMain, TeacherNavMain } from "@/config"
 import { AuthUser } from "@/types/user"
 
 // This is sample data.
@@ -72,8 +72,15 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
     avatar: user?.passport ?? "/avatars/avatar-man.jpg",
     role: user?.role ?? Roles.STUDENT,
   }
-
-  const navMain = user?.role === Roles.STUDENT ? StudentNavMain : AdminNavMain;
+const navMain = (() => {
+  if (!user?.role) return AdminNavMain;
+  switch (user.role) {
+    case Roles.STUDENT: return StudentNavMain;
+    case Roles.TEACHER: return TeacherNavMain;
+    case Roles.ADMIN: return AdminNavMain;
+    default: return StudentNavMain;
+  }
+})();
 
   return (
     <Sidebar collapsible="icon" {...props}>

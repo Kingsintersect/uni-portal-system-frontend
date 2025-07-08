@@ -84,7 +84,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 notify({ message: 'Login Successful.', variant: "success", timeout: 5000 });
                 let redirectUrl = success.user.role === Roles.STUDENT
                     ? `${baseUrl}/dashboard/student`
-                    : `${baseUrl}/dashboard/admin`;
+                    : success.user.role === Roles.TEACHER ? `${baseUrl}/dashboard/teacher`
+                    : success.user.role === Roles.ADMIN ? `${baseUrl}/dashboard/admin`
+                    : `${baseUrl}/dashboard/student`;
 
                 if (success.user.role === Roles.STUDENT) {
                     redirectUrl = (!success.user.is_applied)
