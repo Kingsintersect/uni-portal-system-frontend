@@ -7,6 +7,7 @@ import {
 	MapPinHouse,
 	PieChart,
 	UserRoundPen,
+	BookOpenCheck
 } from "lucide-react";
 import { ObjectType } from "@/types/generic.types";
 
@@ -173,6 +174,81 @@ export const StudentNavMain = [
 			{
 				title: "Grade Report",
 				url: "/dashboard/student/grade-report",
+			},
+		],
+	},
+];
+export const TeacherNavMain = [
+	{
+		title: "DASHBOARD",
+		url: "#",
+		icon: PieChart,
+		isActive: true,
+		items: [
+			{
+				title: "Statistics",
+				url: "/dashboard/teacher",
+			},
+		],
+	},
+	// {
+	// 	title: "STUDENTS",
+	// 	url: "#",
+	// 	icon: GraduationCap,
+	// 	items: [
+	// 		{
+	// 			title: "Student Listing",
+	// 			url: "/dashboard/admin/users",
+	// 		},
+			
+	// 		{
+	// 			title: "Tutors Enrolment",
+	// 			url: "/dashboard/admin/users/tutors-enrollment",
+	// 		},
+	// 	],
+	// },
+	{
+		title: "COURSES",
+		url: "#",
+		icon: GraduationCap,
+		items: [
+			{
+				title: "Courses Listing",
+				url: "/dashboard/teacher/courses",
+			},
+			
+			// {
+			// 	title: "Tutors Enrolment",
+			// 	url: "/dashboard/admin/users/tutors-enrollment",
+			// },
+		],
+	},
+	
+	
+	
+	{
+		title: "MANAGE ACCOUNT",
+		url: "#",
+		icon: UserRoundPen,
+		items: [
+			{
+				title: "Enrolled Courses",
+				url: "/dashboard/student/enrolled-courses",
+			},
+			{
+				title: "Profile",
+				url: "/dashboard/student/profile",
+			},
+		],
+	},
+	{
+		title: "STUDENT GRADE REPORT",
+		url: "#",
+		icon: BookOpenCheck,
+		items: [
+			{
+				title: "Student Grade Report",
+				url: "/dashboard/teacher/student-grade-report",
 			},
 		],
 	},

@@ -23,7 +23,14 @@ export interface Admin extends StudentType {
 	passport: string;
 }
 
-export type AuthUser = Student | Admin;
+export interface Teacher extends StudentType {
+	role: Roles.TEACHER;
+	teacherId: string;
+	department: string;
+	passport: string;
+}
+
+export type AuthUser = Student | Admin | Teacher;
 
 export type AuthState = {
 	user: AuthUser | null;
