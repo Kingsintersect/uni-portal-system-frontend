@@ -142,13 +142,17 @@ export const StudentNavMain = [
 		icon: DollarSign,
 		items: [
 			{
-				title: "Pay Acceptance Fee",
-				url: "/dashboard/student/acceptance",
+				title: "Payment History",
+				url: "/dashboard/student/history/student-payments",
 			},
-			{
-				title: "Pay Tuition Fee",
-				url: "/dashboard/student/tuition",
-			},
+			// {
+			// 	title: "Pay Acceptance Fee",
+			// 	url: "/dashboard/student/acceptance",
+			// },
+			// {
+			// 	title: "Pay Tuition Fee",
+			// 	url: "/dashboard/student/tuition",
+			// },
 		],
 	},
 	{
@@ -174,6 +178,10 @@ export const StudentNavMain = [
 			{
 				title: "Grade Report",
 				url: "/dashboard/student/grade-report",
+			},
+			{
+				title: "Student Grade Report",
+				url: "/dashboard/student/history/student-results",
 			},
 		],
 	},
@@ -226,21 +234,21 @@ export const TeacherNavMain = [
 	
 	
 	
-	{
-		title: "MANAGE ACCOUNT",
-		url: "#",
-		icon: UserRoundPen,
-		items: [
-			{
-				title: "Enrolled Courses",
-				url: "/dashboard/student/enrolled-courses",
-			},
-			{
-				title: "Profile",
-				url: "/dashboard/student/profile",
-			},
-		],
-	},
+	// {
+	// 	title: "MANAGE ACCOUNT",
+	// 	url: "#",
+	// 	icon: UserRoundPen,
+	// 	items: [
+	// 		{
+	// 			title: "Enrolled Courses",
+	// 			url: "/dashboard/student/enrolled-courses",
+	// 		},
+	// 		{
+	// 			title: "Profile",
+	// 			url: "/dashboard/student/profile",
+	// 		},
+	// 	],
+	// },
 	{
 		title: "STUDENT GRADE REPORT",
 		url: "#",

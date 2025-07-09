@@ -28,6 +28,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [authState, setAuthState] = useState<AuthState>({
         user: null,
         access_token: null,
+        refresh_token: null,
         loading: true,
         error: null,
     });
@@ -43,6 +44,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                     setAuthState({
                         user: success.user,
                         access_token: success.access_token || null,
+                        refresh_token: success.refresh_token || null,
                         loading: false,
                         error: null
                     });
@@ -50,6 +52,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                     setAuthState({
                         user: null,
                         access_token: null,
+                        refresh_token: null,
                         loading: false,
                         error: null
                     });
@@ -59,6 +62,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 setAuthState({
                     user: null,
                     access_token: null,
+                    refresh_token: null,
                     loading: false,
                     error: null
                 });
@@ -78,6 +82,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 setAuthState({
                     user: success.user,
                     access_token: success.access_token,
+                    refresh_token: success.refresh_token || null,
                     loading: false,
                     error: null
                 });
@@ -100,6 +105,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 setAuthState({
                     user: null,
                     access_token: null,
+                    refresh_token: null,
                     loading: false,
                     error: error
                 });
@@ -111,6 +117,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             setAuthState({
                 user: null,
                 access_token: null,
+                refresh_token: null,
                 loading: false,
                 error: errorMessage
             });
@@ -129,6 +136,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 setAuthState({
                     user: success.user,
                     access_token: success.access_token,
+                    refresh_token: success.refresh_token || null,
                     loading: false,
                     error: null
                 });
@@ -140,6 +148,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 setAuthState({
                     user: null,
                     access_token: null,
+                    refresh_token: null,
                     loading: false,
                     error: error
                 });
@@ -151,6 +160,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             setAuthState({
                 user: null,
                 access_token: null,
+                refresh_token: null,
                 loading: false,
                 error: errorMessage
             });
@@ -167,6 +177,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             setAuthState({
                 user: null,
                 access_token: null,
+                refresh_token: null,
                 loading: false,
                 error: null
             });
@@ -194,6 +205,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 setAuthState({
                     user: success.user,
                     access_token: success.access_token || authState.access_token,
+                    refresh_token: success.refresh_token || authState.refresh_token,
                     loading: false,
                     error: null
                 });
@@ -202,6 +214,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 setAuthState({
                     user: null,
                     access_token: null,
+                    refresh_token: null,
                     loading: false,
                     error: null
                 });
