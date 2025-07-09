@@ -35,6 +35,7 @@ export type AuthUser = Student | Admin | Teacher;
 export type AuthState = {
 	user: AuthUser | null;
 	access_token: string | null;
+	refresh_token: string | null;
 	loading: boolean;
 	error: string | null | ObjectType;
 };

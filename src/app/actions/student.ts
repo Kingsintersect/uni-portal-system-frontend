@@ -129,6 +129,19 @@ export async function VerifyTuitionFeePayment(
 	return response;
 }
 
+export async function GetStudentPaymentHistory(
+	access_token: string,
+) {
+	const response = (await apiCallerBeta({
+		url: `${remoteApiUrl}/account/user-payment-history`,
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${access_token}`,
+		},
+	})) as any;
+	return response;
+}
+
 export const ApplyForAdmission = async (data: any, access_token: string) => {
 	const response = (await apiCallerBeta({
 		url: `${remoteApiUrl}/application/application-form`,
@@ -159,4 +172,26 @@ export const GetStudentStudyAccount = async (reg_number: string) => {
 		method: "GET",
 	});
 	return response;
+};
+
+export const generatePaymentInvoice = async (access_token: string, paymentData: {
+  id: string;
+  type: string;
+  amount: string;
+  date: string;
+  reference: string;
+  session: string;
+  status: string;
+}) => {
+  const response = await apiCallerBeta({
+    url: `${remoteApiUrl}/payments/generate-invoice`,
+    method: "POST",
+    data: { ...paymentData },
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+      'Content-Type': 'application/json',
+    },
+    //responseType: 'blob', // Important for handling PDF response
+  });
+  return response;
 };

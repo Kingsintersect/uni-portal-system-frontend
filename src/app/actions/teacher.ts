@@ -47,13 +47,13 @@ export async function ViewSingleCourse(
 
     if (response.error) {
       return {
-        success: null,
+        success: null, 
         error:  "Failed to fetch course",
       };
     }
 
     return {
-      success: { shouldRedirect: true }, // ✅ CORRECT TYPE
+      success: { shouldRedirect: true },
       error: null,
     };
   } catch (error: any) {
