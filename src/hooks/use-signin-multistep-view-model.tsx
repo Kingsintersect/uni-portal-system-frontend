@@ -1,8 +1,8 @@
 "use client";
 
-import { CreateStudentAccount } from "@/app/actions/auth";
+import { CreateStudentAccount } from "@/app/actions/auth-actions";
 import { GetAllProgram } from "@/app/actions/faculty.api";
-import { Gender, Nationality, State } from "@/config";
+import { APPLICATION_FEE, Gender, Nationality, State } from "@/config";
 import { notify } from "@/contexts/ToastProvider";
 import { extractErrorMessages } from "@/lib/errorsHandler";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -41,7 +41,6 @@ export const SignupSchema = z
 
 export type SignupFormData = z.infer<typeof SignupSchema>;
 export type ProgramItem = { id: number; name: string; parent: number };
-const APPLICATION_FEE = 10000;
 
 export interface Program {
     id: number;
@@ -64,6 +63,11 @@ const steps = [
         id: 3,
         label: "Application Data",
         fields: ["email", "username", "password", "password_confirmation"],
+    },
+    {
+        id: 4,
+        label: "Confirmation",
+        fields: ["amount"],
     },
 ];
 
@@ -162,7 +166,8 @@ export default function useSignInMultiStepViewModel() {
         },
     });
 
-    const onSubmit = useCallback<SubmitHandler<SignupFormData>>((data) => {
+    const onSubmit = useCallback<SubmitHandler<SignupFormData>>((data, event) => {
+        event?.preventDefault();
         signinMutation.mutate(data);
     }, [signinMutation]);
 
@@ -173,13 +178,13 @@ export default function useSignInMultiStepViewModel() {
         if (!isFieldsValid) return;
         if (currentStep < steps.length) {
             setPreviousStep(currentStep);
-            setCurrentStep((prev) => Math.min(prev + 1, steps.length));
+            setCurrentStep((prev) => prev + 1);
         }
 
-        if (currentStep === steps.length) {
-            await handleSubmit(onSubmit)();
-        }
-    }, [currentStep, trigger, handleSubmit, onSubmit]);
+        // if (currentStep === steps.length) {
+        //     await handleSubmit(onSubmit)();
+        // }
+    }, [currentStep, trigger]);
 
     const prevStep = useCallback(() => {
         if (currentStep > 1) {

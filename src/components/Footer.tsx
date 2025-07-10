@@ -34,7 +34,7 @@ export default function Footer() {
                             <p>123 University Avenue</p>
                             <p>City, State 12345</p>
                             <p className="mt-2">Phone: (123) 456-7890</p>
-                            <p>Email: info@universityportal.edu</p>
+                            <p>Email: info@universitylms.edu</p>
                         </address>
                     </div>
 
@@ -77,7 +77,7 @@ export default function Footer() {
 
                 <div className="border-t border-gray-300/30 mt-10 pt-8 flex flex-col md:flex-row justify-between items-center">
                     <div className="text-sm mb-4 md:mb-0">
-                        © {new Date().getFullYear()} University Portal. All rights reserved.
+                        © {new Date().getFullYear()} University LMS. All rights reserved.
                     </div>
                     <div className="text-sm flex space-x-6">
                         <Link href="#" className="hover:text-gray-300 transition-colors">Privacy Policy</Link>

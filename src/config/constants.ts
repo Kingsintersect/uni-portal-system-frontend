@@ -18,7 +18,7 @@ export const clientSecret = process.env.NEXT_PUBLIC_CLIENT_SECRET_COOU ?? "";
 
 const secretKey = process.env.NEXT_PUBLIC_SESSION_SECRET_COOU;
 export const encodedKey = new TextEncoder().encode(secretKey);
-export const SITE_NAME = "CHUKWUEMEKA ODUMEGWU OJUKWU UNIVERSITY LMS PORTAL"
+export const SITE_NAME = "CHUKWUEMEKA ODUMEGWU OJUKWU UNIVERSITY LMS"
 
 export enum Roles {
 	ADMIN = "ADMIN",
@@ -27,5 +27,6 @@ export enum Roles {
 	MANAGER = "MANAGER",
 }
 
+export const APPLICATION_FEE = 35000;
 export const ACCEPTANCE_FEE = 30000;
 export const FULL_TUITION_FEE = 195000;

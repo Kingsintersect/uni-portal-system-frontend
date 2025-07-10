@@ -17,14 +17,15 @@ export default function ProtectedRoute({ children, allowedRoles }: ProtectedRout
     const pathname = usePathname();
     useEffect(() => {
         if (!loading && !user) {
-            console.log('user', user)
             router.push('/auth/signin');
         } else if (!loading && user && !allowedRoles.includes(user.role)) {
-            console.log('user.role', user.role)
-            console.log('allowedRoles.includes(user.role)', allowedRoles.includes(user.role))
-            if ([Roles.ADMIN, Roles.MANAGER, Roles.TEACHER].includes(user.role as Roles)) {
+            if ([Roles.ADMIN, Roles.MANAGER].includes(user.role as Roles)) {
                 if (pathname !== '/dashboard/admin') {
                     router.push('/dashboard/admin');
+                }
+            } else if ([Roles.TEACHER].includes(user.role as Roles)) {
+                if (pathname !== '/dashboard/teacher') {
+                    router.push('/dashboard/teacher');
                 }
             } else {
                 if (pathname !== '/dashboard/student') {

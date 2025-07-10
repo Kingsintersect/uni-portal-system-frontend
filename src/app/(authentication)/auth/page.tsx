@@ -1,35 +1,37 @@
 'use client';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
-import AuthPageTemplate from '../component/AuthPageTemplate';
-import { useAuth } from '@/contexts/AuthContext';
 import { Loader2 } from 'lucide-react';
-import { SigninSchema } from './signin.types';
 import { z } from 'zod';
 import { cn } from '@/lib/utils';
 import { InputFormField } from '@/components/ui/inputs/FormFields';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { useSignInMutation } from '@/hooks/useSignInMutation';
+import AuthPageTemplate from './component/AuthPageTemplate';
+// import { SigninSchema } from './signin/signin.types';
+import { signInSchema, SignInSchemaType } from '@/schemas/auth-schemas';
 
-type SigninFormData = z.infer<typeof SigninSchema>;
+type SigninFormData = z.infer<typeof signInSchema>;
 
 export default function AuthPage() {
-    const { studentSignin, loading } = useAuth();
-    // const { mutate, isPending } = useSignInMutation();
+    const { mutate, isPending } = useSignInMutation();
+
     const {
         register,
         handleSubmit,
         formState: { errors, isSubmitting, isValid },
     } = useForm<SigninFormData>({
-        resolver: zodResolver(SigninSchema),
+        resolver: zodResolver(signInSchema),
         defaultValues: {
-            reference: '',
+            email: '',
+            // reference: '',
             password: ''
         }
     });
 
-    const onSubmit: SubmitHandler<SigninFormData> = async (data) => {
-        await studentSignin(data);
+    const onSubmit: SubmitHandler<SignInSchemaType> = (data) => {
+        mutate(data); // React Query mutation handles toast and session update
     };
 
     return (
@@ -38,11 +40,11 @@ export default function AuthPage() {
                 <div className="grid grid-cols-1 gap-5">
                     <InputFormField<SigninFormData>
                         type="text"
-                        id={'reference'}
-                        label="Email or Refrence number"
-                        name="reference"
+                        id={'email'}
+                        label="Email or Reference number"
+                        name="email"
                         register={register}
-                        error={errors.reference}
+                        error={errors.email}
                     />
                     <InputFormField<SigninFormData>
                         type="password"
@@ -53,6 +55,7 @@ export default function AuthPage() {
                         error={errors.password}
                     />
                 </div>
+
                 <div className="w-full flex item-center justify-between my-2 py-2">
                     <div className="text-site-a">
                         <div className="flex items-center mb-4 gap-1">
@@ -68,17 +71,16 @@ export default function AuthPage() {
                                 Remember me
                             </label>
                         </div>
-
                     </div>
                     <Link href={"/auth/forgot-password"} className="text-site-a">Forgot password?</Link>
                 </div>
 
                 <button
                     type="submit"
-                    disabled={!isValid || loading}
-                    className="mt-4 w-full bg-site-b text-white px-4 py-2 rounded hover:bg-site-b/80 flex gap-3 justify-center items-center disabled:bg-gray-600  disabled:cursor-not-allowed"
+                    disabled={!isValid || isSubmitting || isPending}
+                    className="mt-4 w-full bg-site-b text-white px-4 py-2 rounded hover:bg-site-b/80 flex gap-3 justify-center items-center disabled:bg-gray-600 disabled:cursor-not-allowed"
                 >
-                    {(isSubmitting || loading)
+                    {(isSubmitting || isPending)
                         ? (
                             <>
                                 <span>Processing...</span>

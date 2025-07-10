@@ -1,5 +1,4 @@
 import {
-	// ArrowDownAZ,
 	BookOpen,
 	DollarSign,
 	Flag,
@@ -7,252 +6,264 @@ import {
 	MapPinHouse,
 	PieChart,
 	UserRoundPen,
-	BookOpenCheck
+	CalendarCheck,
+	School2,
+	MessageSquare,
+	Settings2,
+	LucideIcon
 } from "lucide-react";
 import { ObjectType } from "@/types/generic.types";
 
-export const AdminNavMain = [
-	{
-		title: "DASHBOARD",
-		url: "#",
-		icon: PieChart,
-		isActive: true,
-		items: [
-			{
-				title: "Statistics",
-				url: "/dashboard/admin",
-			},
-		],
-	},
-	{
-		title: "USERS",
-		url: "#",
-		icon: GraduationCap,
-		items: [
-			{
-				title: "Student Listing",
-				url: "/dashboard/admin/users",
-			},
-			{
-				title: "Add New User",
-				url: "/dashboard/admin/users/create",
-			},
-			{
-				title: "Tutors Enrolment",
-				url: "/dashboard/admin/users/tutors-enrollment",
-			},
-		],
-	},
-	{
-		title: "SESSION MIGRTION",
-		url: "#",
-		icon: BookOpen,
-		items: [
-			{
-				title: "Migrate Students",
-				url: "/dashboard/admin/session-migrations",
-			},
-		],
-	},
-	{
-		title: "STUDENT GRADES",
-		url: "#",
-		icon: BookOpen,
-		items: [
-			{
-				title: "Veiw Student Report",
-				url: "/dashboard/admin/students-grade-report",
-			},
-		],
-	},
-	{
-		title: "COURSE MANAGEMENT",
-		url: "#",
-		icon: BookOpen,
-		items: [
-			{
-				title: "Faculties",
-				url: "/dashboard/admin/course-management/faculty",
-			},
-			{
-				title: "Departments",
-				url: "/dashboard/admin/course-management/department",
-			},
-			{
-				title: "Courses",
-				url: "/dashboard/admin/course-management/courses",
-			},
-			{
-				title: "Course Categories",
-				url: "/dashboard/admin/course-management/course-categories",
-			},
-			{
-				title: "Course Assignments",
-				url: "/dashboard/admin/course-management/course-assignment",
-			},
-		],
-	},
-	{
-		title: "REGION MANAGEMENT",
-		url: "#",
-		icon: MapPinHouse,
-		items: [
-			{
-				title: "Countries",
-				url: "/dashboard/admin/region/countries",
-			},
-			{
-				title: "States",
-				url: "/dashboard/admin/region/states",
-			},
-			{
-				title: "Local Government Areas",
-				url: "/dashboard/admin/region/local-gov",
-			},
-		],
-	},
-];
-export const StudentNavMain = [
-	{
-		title: "DASHBOARD",
-		url: "#",
-		icon: PieChart,
-		isActive: true,
-		items: [
-			{
-				title: "Statistics",
-				url: "/dashboard/student",
-			},
-		],
-	},
-	{
-		title: "PROCESS ADMISSION",
-		url: "#",
-		icon: GraduationCap,
-		items: [
-			{
-				title: "Application Form",
-				url: "/dashboard/student/complete-application",
-			},
-		],
-	},
-	{
-		title: "PAYMENTS",
-		url: "#",
-		icon: DollarSign,
-		items: [
-			{
-				title: "Pay Acceptance Fee",
-				url: "/dashboard/student/acceptance",
-			},
-			{
-				title: "Pay Tuition Fee",
-				url: "/dashboard/student/tuition",
-			},
-		],
-	},
-	{
-		title: "MANAGE ACCOUNT",
-		url: "#",
-		icon: UserRoundPen,
-		items: [
-			{
-				title: "Enrolled Courses",
-				url: "/dashboard/student/enrolled-courses",
-			},
-			{
-				title: "Profile",
-				url: "/dashboard/student/profile",
-			},
-		],
-	},
-	{
-		title: "REPORTS",
-		url: "#",
-		icon: Flag,
-		items: [
-			{
-				title: "Grade Report",
-				url: "/dashboard/student/grade-report",
-			},
-		],
-	},
-];
-export const TeacherNavMain = [
-	{
-		title: "DASHBOARD",
-		url: "#",
-		icon: PieChart,
-		isActive: true,
-		items: [
-			{
-				title: "Statistics",
-				url: "/dashboard/teacher",
-			},
-		],
-	},
-	// {
-	// 	title: "STUDENTS",
-	// 	url: "#",
-	// 	icon: GraduationCap,
-	// 	items: [
-	// 		{
-	// 			title: "Student Listing",
-	// 			url: "/dashboard/admin/users",
-	// 		},
-			
-	// 		{
-	// 			title: "Tutors Enrolment",
-	// 			url: "/dashboard/admin/users/tutors-enrollment",
-	// 		},
-	// 	],
-	// },
-	{
-		title: "COURSES",
-		url: "#",
-		icon: GraduationCap,
-		items: [
-			{
-				title: "Courses Listing",
-				url: "/dashboard/teacher/courses",
-			},
-			
-			// {
-			// 	title: "Tutors Enrolment",
-			// 	url: "/dashboard/admin/users/tutors-enrollment",
-			// },
-		],
-	},
-	
-	
-	
-	{
-		title: "MANAGE ACCOUNT",
-		url: "#",
-		icon: UserRoundPen,
-		items: [
-			{
-				title: "Enrolled Courses",
-				url: "/dashboard/student/enrolled-courses",
-			},
-			{
-				title: "Profile",
-				url: "/dashboard/student/profile",
-			},
-		],
-	},
-	{
-		title: "STUDENT GRADE REPORT",
-		url: "#",
-		icon: BookOpenCheck,
-		items: [
-			{
-				title: "Student Grade Report",
-				url: "/dashboard/teacher/student-grade-report",
-			},
-		],
-	},
-];
+export interface SidebarNavItem {
+	title: string;
+	url: string;
+	icon?: LucideIcon;
+	isActive?: boolean;
+	items?: { title: string; url: string }[];
+	display: boolean;
+}
+
+export interface SidebarNavConfig {
+	compound: SidebarNavItem[];
+	flat?: {
+		title: string;
+		url: string;
+		icon: LucideIcon;
+		display: boolean;
+	}[];
+}
+
+export const AdminNavMain: SidebarNavConfig = {
+	compound: [
+		{
+			title: "DASHBOARD",
+			url: "#",
+			icon: PieChart,
+			isActive: true,
+			items: [
+				{
+					title: "Statistics",
+					url: "/dashboard/admin",
+				},
+			],
+			display: true,
+		},
+		{
+			title: "USERS",
+			url: "#",
+			icon: GraduationCap,
+			items: [
+				{
+					title: "Student Listing",
+					url: "/dashboard/admin/users",
+				},
+				{
+					title: "Add New User",
+					url: "/dashboard/admin/users/create",
+				},
+				{
+					title: "Tutors Enrolment",
+					url: "/dashboard/admin/users/tutors-enrollment",
+				},
+			],
+			display: true,
+		},
+		{
+			title: "SESSION MIGRTION",
+			url: "#",
+			icon: BookOpen,
+			items: [
+				{
+					title: "Migrate Students",
+					url: "/dashboard/admin/session-migrations",
+				},
+			],
+			display: true,
+		},
+		{
+			title: "STUDENT GRADES",
+			url: "#",
+			icon: BookOpen,
+			items: [
+				{
+					title: "Veiw Student Report",
+					url: "/dashboard/admin/students-grade-report",
+				},
+			],
+			display: true,
+		},
+		{
+			title: "COURSE MANAGEMENT",
+			url: "#",
+			icon: BookOpen,
+			items: [
+				{
+					title: "Faculties",
+					url: "/dashboard/admin/course-management/faculty",
+				},
+				{
+					title: "Departments",
+					url: "/dashboard/admin/course-management/department",
+				},
+				{
+					title: "Courses",
+					url: "/dashboard/admin/course-management/courses",
+				},
+				{
+					title: "Course Categories",
+					url: "/dashboard/admin/course-management/course-categories",
+				},
+				{
+					title: "Course Assignments",
+					url: "/dashboard/admin/course-management/course-assignment",
+				},
+			],
+			display: true,
+		},
+		{
+			title: "REGION MANAGEMENT",
+			url: "#",
+			icon: MapPinHouse,
+			items: [
+				{
+					title: "Countries",
+					url: "/dashboard/admin/region/countries",
+				},
+				{
+					title: "States",
+					url: "/dashboard/admin/region/states",
+				},
+				{
+					title: "Local Government Areas",
+					url: "/dashboard/admin/region/local-gov",
+				},
+			],
+			display: true,
+		},
+	]
+}
+export const StudentNavMain: SidebarNavConfig = {
+	compound: [
+		{
+			title: "DASHBOARD",
+			url: "#",
+			icon: PieChart,
+			isActive: true,
+			items: [
+				{
+					title: "Statistics",
+					url: "/dashboard/student",
+				},
+			],
+			display: true,
+		},
+		{
+			title: "PROCESS ADMISSION",
+			url: "#",
+			icon: GraduationCap,
+			items: [
+				{
+					title: "Application Form",
+					url: "/dashboard/student/complete-application",
+				},
+			],
+			display: true,
+		},
+		{
+			title: "PAYMENTS",
+			url: "#",
+			icon: DollarSign,
+			items: [
+				{
+					title: "Pay Acceptance Fee",
+					url: "/dashboard/student/acceptance",
+				},
+				{
+					title: "Pay Tuition Fee",
+					url: "/dashboard/student/tuition",
+				},
+			],
+			display: true,
+		},
+		{
+			title: "MANAGE ACCOUNT",
+			url: "#",
+			icon: UserRoundPen,
+			items: [
+				{
+					title: "Enrolled Courses",
+					url: "/dashboard/student/enrolled-courses",
+				},
+				{
+					title: "Profile",
+					url: "/dashboard/student/profile",
+				},
+			],
+			display: true,
+		},
+		{
+			title: "REPORTS",
+			url: "#",
+			icon: Flag,
+			items: [
+				{
+					title: "Grade Report",
+					url: "/dashboard/student/grade-report",
+				},
+			],
+			display: true,
+		},
+	]
+}
+export const TeacherNavMain: SidebarNavConfig = {
+	compound: [
+		{
+			title: "DASHBOARD",
+			url: "#",
+			icon: PieChart,
+			isActive: true,
+			items: [
+				{
+					title: "Overview",
+					url: "/dashboard/teacher",
+				},
+			],
+			display: true,
+		},
+	],
+	flat: [
+		{
+			title: "My COURSES",
+			url: "/dashboard/teacher/enrolled-courses",
+			icon: GraduationCap,
+			display: true,
+		},
+		{
+			title: "ASSIGNMENTS",
+			url: "/dashboard/teacher/assignments",
+			icon: School2,
+			display: true,
+		},
+		{
+			title: "CALENDER",
+			url: "/dashboard/teacher/calender",
+			icon: CalendarCheck,
+			display: true,
+		},
+		{
+			title: "DISCUSSIONS",
+			url: "/dashboard/teacher/discussions",
+			icon: MessageSquare,
+			display: true,
+		},
+		{
+			title: "SETTINGS",
+			url: "/dashboard/teacher/settings",
+			icon: Settings2,
+			display: false,
+		},
+	],
+};
 
 export const CreditLoads: CreditLoad[] = [
 	{ id: "1", score: "1" },
