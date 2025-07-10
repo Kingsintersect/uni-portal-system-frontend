@@ -7,8 +7,8 @@ import Link from 'next/link';
 import React, { ReactNode } from 'react'
 
 export const metadata: Metadata = {
-   title: `${SITE_NAME} - Signup | Register Form`,
-   description: "Login to your dashboard to continue your education",
+   title: `${SITE_NAME} - Purchase Admission Form`,
+   description: "Purchase your adminission form to apply for admission into the university.",
 };
 
 type LayoutProps = {

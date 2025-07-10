@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/sidebar"
 import { AdminNavMain, Roles, SITE_NAME, StudentNavMain, TeacherNavMain } from "@/config"
 import { AuthUser } from "@/types/user"
+import { NavProjects } from "./nav-projects"
 
 // This is sample data.
 const data = {
@@ -72,24 +73,24 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
     avatar: user?.passport ?? "/avatars/avatar-man.jpg",
     role: user?.role ?? Roles.STUDENT,
   }
-const navMain = (() => {
-  if (!user?.role) return AdminNavMain;
-  switch (user.role) {
-    case Roles.STUDENT: return StudentNavMain;
-    case Roles.TEACHER: return TeacherNavMain;
-    case Roles.ADMIN: return AdminNavMain;
-    default: return StudentNavMain;
-  }
-})();
+  const navMain = (() => {
+    if (!user?.role) return AdminNavMain;
+    switch (user.role) {
+      case Roles.STUDENT: return StudentNavMain;
+      case Roles.TEACHER: return TeacherNavMain;
+      case Roles.ADMIN: return AdminNavMain;
+      default: return StudentNavMain;
+    }
+  })();
 
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
-      <SidebarContent>
-        <NavMain items={navMain} />
-        {/* <NavProjects projects={data.projects} /> */}
+      <SidebarContent className="pl-3">
+        <NavMain items={navMain.compound} />
+        {navMain.flat && <NavProjects projects={navMain.flat} />}
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={userData} />

@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { baseUrl } from "@/config";
 import { notify } from "@/contexts/ToastProvider";
-import { CreateUsersByCsv } from "@/app/actions/auth";
+import { CreateUsersByCsv } from "@/app/actions/auth-actions";
 // Define the user data structure
 export interface UserData {
 	firstName: string;

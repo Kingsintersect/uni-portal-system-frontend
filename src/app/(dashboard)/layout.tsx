@@ -2,6 +2,7 @@ import MarginWidthWrapper from "@/components/ui/dashboard/MarginWidthWrapper";
 import PageWrapper from "@/components/ui/dashboard/PageWrapper";
 import { SITE_NAME } from "@/config";
 import { Metadata } from "next"
+import TeacherFeedbackIntegration from "./dashboard/components/FeedbackIntegration";
 
 export const dynamic = "force-dynamic";
 
@@ -17,6 +18,7 @@ const layout = async ({ children }: { children: React.ReactNode }) => {
          <main className='flex-1'>
             <MarginWidthWrapper>
                <PageWrapper>{children}</PageWrapper>
+               <TeacherFeedbackIntegration />
             </MarginWidthWrapper>
          </main>
       </div>

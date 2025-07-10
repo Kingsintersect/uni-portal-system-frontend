@@ -8,7 +8,7 @@ const Banner = () => {
             <AppLogo
                image_url={'/logo/logo.jpg'}
                logo_text_style='text-orange-800 font-bold text-2xl'
-               logo_text={'COOU-PORTAL'}
+               logo_text={'COOU-LMS'}
                Img_container_style='w-32 h-32'
             />
          </div>

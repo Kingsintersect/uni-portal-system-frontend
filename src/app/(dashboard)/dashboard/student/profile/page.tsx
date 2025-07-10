@@ -129,7 +129,7 @@ const StudentProfile = () => {
                   </div>
 
                   <div className="p-4 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-500">
-                     © 2025 Enugu State University of Science and Technology - Student Portal • <Link href="#" className="text-orange-600 hover:underline">Privacy Policy</Link> • <Link href="#" className="text-orange-600 hover:underline">Terms of Service</Link>
+                     © 2025 Enugu State University of Science and Technology - Student Learning Management System • <Link href="#" className="text-orange-600 hover:underline">Privacy Policy</Link> • <Link href="#" className="text-orange-600 hover:underline">Terms of Service</Link>
                   </div>
                </div>
                : <div className="bg-white dark:bg-gray-800 shadow-xl rounded-2xl p-6 text-center">

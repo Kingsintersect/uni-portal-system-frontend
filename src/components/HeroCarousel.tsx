@@ -37,6 +37,8 @@ const carouselImages: CarouselImage[] = [
 
 export default function HeroCarousel() {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const fullSiteName = SITE_NAME.split(" ").slice(0, -1);
+    const fullSiteNameLastText = SITE_NAME.split(" ").pop();
 
     const goToNext = () => {
         setCurrentIndex((prevIndex) =>
@@ -119,14 +121,14 @@ export default function HeroCarousel() {
                         onClick={() => goToSlide(index)}
                         className={cn(
                             "w-3 h-3 rounded-full transition-colors",
-                            index === currentIndex ? "bg-white" : "bg-white/40"
+                            index === currentIndex ? "bg-black" : "bg-black/40"
                         )}
                     />
                 ))}
             </div>
-            <div className="absolute z-50 top-2/3 left-20 max-w-2xl min-h-20 rounded-lg p-4 transform -translate-y-1/2">
-                <div className="bg-white/50 backdrop-blur-sm rounded-lg p-4">
-                    <h2 className="text-2xl font-bold text-site-a mb-4">{SITE_NAME.toLowerCase()}</h2>
+            <div className="absolute z-50 top-3/4 left-15 max-w-2xl min-h-20 rounded-lg p-10 transform -translate-y-1/2">
+                <div className="bg-black/40 backdrop-blur-sm rounded-lg p-10">
+                    <h2 className="text-2xl font-bold text-site-a mb-4">{`${fullSiteName.join(' ')} `} <span className="text-site-b">{fullSiteNameLastText}</span></h2>
                     <div className="h-full flex items-center justify-start gap-10">
                         <Button variant={"default"} asChild size={"lg"}>
                             <Link href="/auth/signin">
