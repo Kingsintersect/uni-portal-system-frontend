@@ -1,4 +1,8 @@
 "use client";
+<<<<<<< HEAD
+
+=======
+>>>>>>> 41291f51f848262be36c47caf5b11d9c2262721e
 import {
   MoreHorizontal,
   Trash,
@@ -30,16 +34,24 @@ import { notify } from "@/contexts/ToastProvider";
 import { useRouter } from "next/navigation";
 import { ApiResponse } from "@/types/generic.types";
 import { remoteApiUrl } from "@/config";
+<<<<<<< HEAD
+=======
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
 import { saveAs } from 'file-saver';
 import { generatePaymentInvoice } from "@/app/actions/student";
 import { toast } from "react-toastify";
+>>>>>>> 41291f51f848262be36c47caf5b11d9c2262721e
 
 interface DropMenu {
   title: string;
   url?: string;
   icon?: LucideIcon;
+<<<<<<< HEAD
+}
+
+interface ActionMenuProps<TData> {
+=======
   onClick?: () => void;
 }
 
@@ -59,28 +71,42 @@ export type BaseRowType = {
 };
 
 interface ActionMenuProps<TData extends BaseRowType> {
+>>>>>>> 41291f51f848262be36c47caf5b11d9c2262721e
   row: TData;
   onCopy?: (id: string) => void;
   onDelete?: (access_token: string, id: string) => Promise<ApiResponse<TData>>;
   onClick?: (access_token: string, id: string) => Promise<ApiResponse<any>>;
   onSuccess?: () => void;
   menu?: DropMenu[];
+<<<<<<< HEAD
+}
+
+export function ActionMenu<TData extends { id: string }>({
+=======
   isPaymentRow?: boolean;
 }
 
 export function ActionMenu<TData extends BaseRowType>({
+>>>>>>> 41291f51f848262be36c47caf5b11d9c2262721e
   row,
   onCopy,
   onDelete,
   onClick,
   menu = [],
   onSuccess,
+<<<<<<< HEAD
+=======
   isPaymentRow = false,
+>>>>>>> 41291f51f848262be36c47caf5b11d9c2262721e
 }: ActionMenuProps<TData>) {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+<<<<<<< HEAD
+  const { session, loading } = useSession();
+=======
   const { session } = useSession();
+>>>>>>> 41291f51f848262be36c47caf5b11d9c2262721e
 
   const handleDelete = async () => {
     if (!session?.access_token) {
@@ -108,7 +134,11 @@ export function ActionMenu<TData extends BaseRowType>({
         });
       if (error)
         notify({
+<<<<<<< HEAD
+          message: "Record Cound not be Deleted",
+=======
           message: "Record Could not be Deleted",
+>>>>>>> 41291f51f848262be36c47caf5b11d9c2262721e
           variant: "error",
           timeout: 5000,
         });
@@ -127,6 +157,52 @@ export function ActionMenu<TData extends BaseRowType>({
     }
   };
 
+<<<<<<< HEAD
+  return (
+    <>
+      <DropdownMenu data-loading={loading}>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" className="h-8 w-8 p-0">
+            <span className="sr-only">Open menu</span>
+            <MoreHorizontal className="h-4 w-4" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent style={{ position: "relative" }} align="end">
+          <DropdownMenuLabel>Actions</DropdownMenuLabel>
+          <DropdownMenuItem onClick={() => onCopy?.(row.id)}>
+            <Copy />
+            Copy ID
+          </DropdownMenuItem>
+
+          {menu.map((item, index) => (
+            <React.Fragment key={index}>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem asChild>
+                <Link href={item.url ?? "#"} className="flex items-center">
+                  {item.icon ? (
+                    <item.icon className="mr-2 h-4 w-4" />
+                  ) : (
+                    <Settings className="mr-2 h-4 w-4" />
+                  )}
+                  {item.title}
+                </Link>
+              </DropdownMenuItem>
+            </React.Fragment>
+          ))}
+
+          {onDelete && (
+            <>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                onClick={() => setIsModalOpen(true)}
+                className="text-red-500"
+              >
+                <Trash className="mr-2 h-4 w-4" /> Delete
+              </DropdownMenuItem>
+            </>
+          )}
+
+=======
   const handleGenerateInvoice = async () => {
      if (!isPaymentRow) return;
     
@@ -318,12 +394,25 @@ export function ActionMenu<TData extends BaseRowType>({
             </React.Fragment>
           ))}
 
+>>>>>>> 41291f51f848262be36c47caf5b11d9c2262721e
           {onClick && (
             <>
               <DropdownMenuSeparator />
               <DropdownMenuItem
                 onClick={async (e) => {
                   e.preventDefault();
+<<<<<<< HEAD
+                //   if (!session?.access_token) {
+                //     notify({
+                //       message: "Token has expired.",
+                //       variant: "error",
+                //       timeout: 5000,
+                //     });
+                //     router.push("/auth/signin");
+                //     return;
+                //   }
+=======
+>>>>>>> 41291f51f848262be36c47caf5b11d9c2262721e
                   try {
                     const result = await onClick(session.access_token, row.id);
                     if (result?.success?.shouldRedirect) {
@@ -372,4 +461,8 @@ export function ActionMenu<TData extends BaseRowType>({
       </Dialog>
     </>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 41291f51f848262be36c47caf5b11d9c2262721e

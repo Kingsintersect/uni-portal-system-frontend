@@ -19,6 +19,20 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+<<<<<<< HEAD
+import { CheckCircle2Icon, Loader2, Upload } from "lucide-react";
+import { ScoreAnalytics } from './components/ScoreAnalytics';
+import { StudentScoresTable } from "./components/StudentScoresTable";
+import {
+  fetchTeacherCourses,
+  fetchStudentsResults,
+  ExportScores,
+} from "@/app/actions/teacher.results";
+import { useAuth } from "@/contexts/AuthContext";
+import * as XLSX from "xlsx";
+import { BsFiletypeCsv } from "react-icons/bs";
+import { RiFileExcel2Line } from "react-icons/ri";
+=======
 import { CheckCircle2Icon, FileSpreadsheet, FileText, Loader2, Upload } from "lucide-react";
 import { ScoreAnalytics } from './components/ScoreAnalytics';
 import { StudentScoresTable } from "./components/StudentScoresTable";
@@ -28,6 +42,7 @@ import {
 import { useAuth } from "@/contexts/AuthContext";
 import * as XLSX from "xlsx";
 
+>>>>>>> 41291f51f848262be36c47caf5b11d9c2262721e
 
 export type ActivityType = "assign" | "quiz" | "exam" | string;
 export type StudentActivity = {
@@ -360,11 +375,19 @@ const TeacherScoresInterface = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Button onClick={exportToCSV} className="gap-2 bg-white text-black">
+<<<<<<< HEAD
+            <BsFiletypeCsv className="h-4 w-4" />
+            Export Results (CSV)
+          </Button>
+          <Button onClick={exportToExcel} className="gap-2">
+            <RiFileExcel2Line className="h-4 w-4" />
+=======
             <FileText className="h-4 w-4" />
             Export Results (CSV)
           </Button>
           <Button onClick={exportToExcel} className="gap-2">
             <FileSpreadsheet className="h-4 w-4" />
+>>>>>>> 41291f51f848262be36c47caf5b11d9c2262721e
             Export Results (Excel)
           </Button>
         </div>

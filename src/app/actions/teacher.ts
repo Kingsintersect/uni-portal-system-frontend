@@ -47,13 +47,21 @@ export async function ViewSingleCourse(
 
     if (response.error) {
       return {
+<<<<<<< HEAD
+        success: null,
+=======
         success: null, 
+>>>>>>> 41291f51f848262be36c47caf5b11d9c2262721e
         error:  "Failed to fetch course",
       };
     }
 
     return {
+<<<<<<< HEAD
+      success: { shouldRedirect: true }, // ✅ CORRECT TYPE
+=======
       success: { shouldRedirect: true },
+>>>>>>> 41291f51f848262be36c47caf5b11d9c2262721e
       error: null,
     };
   } catch (error: any) {
