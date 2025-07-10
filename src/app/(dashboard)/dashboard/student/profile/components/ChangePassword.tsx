@@ -4,7 +4,7 @@ import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { ChangeUserPassword } from "@/app/actions/auth";
+import { ChangeUserPassword } from "@/app/actions/auth-actions";
 import { notify } from "@/contexts/ToastProvider";
 import { useRouter } from "next/navigation";
 import { extractErrorMessages } from "@/lib/errorsHandler";

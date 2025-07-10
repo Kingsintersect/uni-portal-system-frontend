@@ -15,15 +15,15 @@
     "jsx": "preserve",
     "incremental": false,
     "noImplicitAny": false,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "plugins": [{
+      "name": "next"
+    }],
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "typeRoots": ["./types", "./node_modules/@types"],
+    "types": ["next-auth"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "types/**/*.ts"],
   "exclude": ["node_modules"]
 }

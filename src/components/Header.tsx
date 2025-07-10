@@ -15,7 +15,7 @@ const Header = () => {
 						image_url={'/logo/logo.jpg'}
 						classList=''
 						Img_container_style='w-10 h-10'
-						logo_text={"COOU Admission Portal"}
+						logo_text={"COOU LMS"}
 					/>
 				</div>
 

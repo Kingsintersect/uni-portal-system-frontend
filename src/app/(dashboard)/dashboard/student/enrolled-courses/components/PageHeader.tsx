@@ -31,7 +31,7 @@ const PageHeader = ({ student }: { student: StudentType | null }) => {
    return (
       <div className="w-full max-w-7xl mx-auto my-8">
          <div className="brown-gold rounded-t-2xl p-4 text-white">
-            <h2 className="text-2xl font-bold tracking-tight">Academic Portal</h2>
+            <h2 className="text-2xl font-bold tracking-tight">Learning Management System</h2>
             <p className="text-teal-100 mt-2">Welcome to your academic dashboard</p>
          </div>
 
