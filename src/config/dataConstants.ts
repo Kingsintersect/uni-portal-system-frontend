@@ -170,6 +170,7 @@ export const StudentNavMain: SidebarNavConfig = {
 			display: true,
 		},
 		{
+
 		title: "PAYMENTS",
 		url: "#",
 		icon: DollarSign,
@@ -221,6 +222,7 @@ export const StudentNavMain: SidebarNavConfig = {
 		],
 		display: true,
 	},
+
 	]
 }
 export const TeacherNavMain: SidebarNavConfig = {

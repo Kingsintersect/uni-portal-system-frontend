@@ -1,8 +1,7 @@
- "use server";
+"use server";
 
 import { remoteApiUrl } from "@/config";
 import { loginSessionKey } from "@/lib/definitions";
-import { ObjectType } from "@/types/generic.types";
 import {
 	deleteSession,
 	deleteSessionKey,
@@ -10,82 +9,10 @@ import {
 	setSession,
 } from "@/lib/session";
 import { apiCallerBeta } from "@/lib/apiCaller";
- import { SessionData } from "@/types/auth";
+import { SessionData } from "@/types/auth";
+import { ObjectType } from "@/types/generic.types";
 import { GenericDataType } from "@/types/generic.types";
-// import { signIn, signOut } from "@/auth";
 import { redirect } from "next/navigation";
-import { SignInSchemaType } from "@/schemas/auth-schemas";
-
-export async function validateUser(data: ObjectType): Promise<GenericDataType> {
-	const response = (await apiCallerBeta({
-		url: `${remoteApiUrl}/application/login`,
-		method: "POST",
-		data: { ...data },
-	})) as GenericDataType;
-	if (response.success) {
-		const { user, access_token } = response.success;
-		user.role = user.role ?? "STUDENT";
-		await setSession(
-			loginSessionKey,
-			{
-				user: user,
-				access_token: access_token,
-			},
-			"1h"
-		);
-	}
-	return response;
-}
-// const errorMap: Record<string, string> = {
-// 	"CredentialsSignin": "Invalid email or password.",
-// 	"OAuthSignin": "There was an issue signing in with the provider.",
-// };
-// export async function signInAction(data: SignInSchemaType) {
-// 	try {
-// 		const result = await signIn("credentials", {
-// 			...data,
-// 			redirect: false,
-// 			// callbackUrl: "/dashboard",
-// 		})
-
-// 		if (!result || result.error) {
-// 			const userMessage = result?.error ? (errorMap[result.error] || "Authentication failed! Please try again.") : "Authentication failed! Please try again.";
-// 			throw new Error(userMessage);
-// 		}
-// 		return result;
-// 	} catch (error) {
-// 		console.error("SignInAction error:", error);
-// 		if (error instanceof Error) {
-// 			throw new Error(error.message);
-// 		}
-// 		throw new Error("Something went wrong during sign in.");
-// 	}
-// }
-
-// export async function signOutAction() {
-// 	await signOut();
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export const studentSignin = async (
 	data: ObjectType
@@ -227,5 +154,3 @@ export const CreateUsersByCsv = async (
 	});
 	return response;
 };
-
-

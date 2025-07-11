@@ -22,7 +22,7 @@
       "@/*": ["./src/*"]
     },
     "typeRoots": ["./types", "./node_modules/@types"],
-    // "types": ["next-auth"]
+    "types": ["next-auth"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "types/**/*.ts"],
   "exclude": ["node_modules"]
