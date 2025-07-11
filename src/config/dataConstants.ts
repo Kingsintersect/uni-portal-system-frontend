@@ -170,49 +170,59 @@ export const StudentNavMain: SidebarNavConfig = {
 			display: true,
 		},
 		{
-			title: "PAYMENTS",
-			url: "#",
-			icon: DollarSign,
-			items: [
-				{
-					title: "Pay Acceptance Fee",
-					url: "/dashboard/student/acceptance",
-				},
-				{
-					title: "Pay Tuition Fee",
-					url: "/dashboard/student/tuition",
-				},
-			],
-			display: true,
-		},
-		{
-			title: "MANAGE ACCOUNT",
-			url: "#",
-			icon: UserRoundPen,
-			items: [
-				{
-					title: "Enrolled Courses",
-					url: "/dashboard/student/enrolled-courses",
-				},
-				{
-					title: "Profile",
-					url: "/dashboard/student/profile",
-				},
-			],
-			display: true,
-		},
-		{
-			title: "REPORTS",
-			url: "#",
-			icon: Flag,
-			items: [
-				{
-					title: "Grade Report",
-					url: "/dashboard/student/grade-report",
-				},
-			],
-			display: true,
-		},
+
+		title: "PAYMENTS",
+		url: "#",
+		icon: DollarSign,
+		items: [
+			{
+				title: "Payment History",
+				url: "/dashboard/student/history/student-payments",
+			},
+			// {
+			// 	title: "Pay Acceptance Fee",
+			// 	url: "/dashboard/student/acceptance",
+			// },
+			// {
+			// 	title: "Pay Tuition Fee",
+			// 	url: "/dashboard/student/tuition",
+			// },
+		],
+		display: true,
+	},
+	{
+		title: "MANAGE ACCOUNT",
+		url: "#",
+		icon: UserRoundPen,
+		items: [
+			{
+				title: "Enrolled Courses",
+				url: "/dashboard/student/enrolled-courses",
+			},
+			{
+				title: "Profile",
+				url: "/dashboard/student/profile",
+			},
+		],
+		display: true,
+	},
+	{
+		title: "REPORTS",
+		url: "#",
+		icon: Flag,
+		items: [
+			{
+				title: "Grade Report",
+				url: "/dashboard/student/grade-report",
+			},
+			{
+				title: "Student Grade Report",
+				url: "/dashboard/student/history/student-results",
+			},
+		],
+		display: true,
+	},
+
 	]
 }
 export const TeacherNavMain: SidebarNavConfig = {

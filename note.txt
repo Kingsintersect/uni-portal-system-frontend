@@ -1,0 +1,15 @@
+I encountered some issues with the next-auth configuration when building with npm run build and so these are the steps I took to be able to build successfully
+
+1. I deleted the next-auth dependency from the package.json and re-installed
+
+2. I commemted out the auth.ts file and auth-actions file both in the actions folder
+
+3. commennted out [next-auth]/route.ts file in the app/api route
+
+4. commented out the useSignInMutation.ts hook
+
+5. commented out the app/(authentication)/auth/page.tsx file
+
+6. commented out changePassword.ts and useAplyForAdmmission hook
+
+All these files are dependent on the next-auth hook and so I commented them out
