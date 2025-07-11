@@ -8,6 +8,8 @@ type StudentHeaderProps = {
     totalCredits: number;
     totalQualityPoints: number;
     degreeClass: string;
+    semester?: string;
+    academicYear?: string;
 };
 
 export const StudentHeader = React.memo(({
@@ -15,14 +17,19 @@ export const StudentHeader = React.memo(({
     gpa,
     totalCredits,
     totalQualityPoints,
-    degreeClass
-}: StudentHeaderProps) => (
+    degreeClass,
+    semester,
+    academicYear
+}: StudentHeaderProps) => {
+    const displaySemester = semester || gradeReport.semester;
+    const displayAcademicYear = academicYear || gradeReport.academicYear;
+    return (
     <div className="brown-burgundy text-white p-6">
         <div className="flex justify-between items-center">
             <div>
                 <h1 className="text-2xl font-bold">Student Grade Report</h1>
                 <p className="text-blue-100">
-                    {getSemesterName(gradeReport.semester)} - {gradeReport.academicYear}
+                     {getSemesterName(displaySemester)} - {displayAcademicYear}  
                 </p>
                 <p className="text-blue-200 text-sm mt-1">
                     Nigerian University 5.00 Grading System
@@ -43,6 +50,7 @@ export const StudentHeader = React.memo(({
             </div>
         </div>
     </div>
-));
+    )
+});
 
 StudentHeader.displayName = 'StudentHeader';

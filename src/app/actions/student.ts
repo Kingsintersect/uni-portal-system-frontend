@@ -160,3 +160,16 @@ export const GetStudentStudyAccount = async (reg_number: string) => {
 	});
 	return response;
 };
+
+export async function GetStudentPaymentHistory(
+	access_token: string,
+) {
+	const response = (await apiCallerBeta({
+		url: `${remoteApiUrl}/account/user-payment-history`,
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${access_token}`,
+		},
+	})) as any;
+	return response;
+}

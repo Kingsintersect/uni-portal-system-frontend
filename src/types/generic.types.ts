@@ -7,6 +7,7 @@ export type GenericDataType<
 // 	| { success?: undefined; error: Record<string, any> };
 
 export type ApiResponse<T> = {
+	data?: any;
 	success: T | null;
 	error: object | string | null;
 };
